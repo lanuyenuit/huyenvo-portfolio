@@ -1,0 +1,8 @@
+/* Intentionally empty.
+
+   Portfolio.jsx ships its own styles. Vite's default index.css fought them —
+   `#root { width: 1126px; text-align: center; border-inline: ... }` in
+   particular breaks the full-bleed layout — so the defaults were removed
+   rather than overridden.
+
+   Add global rules here only if the component can't express them itself. */

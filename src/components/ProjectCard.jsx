@@ -19,7 +19,10 @@ export function ProjectCard({ p, index, reduce }) {
             <h3>{p.title}</h3>
             <div className="card-tags">{p.tags.join(" · ")}</div>
           </div>
-          <span className="state" data-s={p.state}>{p.stateLabel} · {p.year}</span>
+          {/* Proposed cards carry "Proposed" in both fields — don't print it twice. */}
+          <span className="state" data-s={p.state}>
+            {p.year && p.year !== p.stateLabel ? `${p.stateLabel} · ${p.year}` : p.stateLabel}
+          </span>
         </div>
 
         <Shots shots={p.shots} />

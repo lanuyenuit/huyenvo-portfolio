@@ -13,7 +13,7 @@ export const PROFILE = {
 
 export const SPECS = [
   { k: "Experience", v: "6+ years", sub: "Agile / Scrum product teams" },
-  { k: "Core stack", v: "React · TypeScript · Node", sub: "Next.js, Express, PostgreSQL" },
+  { k: "Core stack", v: "React · TypeScript · Node", sub: "Vite, Express, PostgreSQL" },
   { k: "Based", v: "Dallas, TX", sub: "Onsite, hybrid or remote" },
   { k: "Authorization", v: "US work authorized", sub: "No sponsorship required" },
   { k: "Currently", v: "Job intelligence platform", sub: "Crawler + LLM extraction" },
@@ -21,9 +21,9 @@ export const SPECS = [
 ];
 
 export const TICKER = [
-  "React", "TypeScript", "Node.js", "Next.js", "PostgreSQL", "Express",
+  "React", "TypeScript", "Node.js", "Vite", "PostgreSQL", "Express",
   "Docker", "GitHub Actions", "Jest", "Playwright", "REST APIs", "Redux Toolkit",
-  "Vite", "Kubernetes", "React Query", "CI/CD",
+  "Tailwind", "Kubernetes", "React Query", "CI/CD",
 ];
 
 export const SECTIONS = [

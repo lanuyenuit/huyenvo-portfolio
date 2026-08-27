@@ -13,31 +13,28 @@ export const PROJECTS = [
     hook: {
       label: "The interesting decision",
       text:
-        "Three LLM providers sit behind one interface. A rate limit or outage on any single provider degrades the crawl instead of stopping it — extraction falls through to the next available model and keeps going.",
+        "Extraction runs through a chain of three Llama models on Groq. A 429 from one model isn't a failed request — the call drops to the next model down the chain, so a rate limit costs a little accuracy instead of losing the job posting.",
     },
     specs: [
-      ["Frontend", "React, Next.js, TypeScript"],
-      ["Backend", "Node.js, Express, pnpm monorepo, JWT auth, multer + PDF parsing"],
+      ["Frontend", "React 19, TypeScript, Vite, React Router 7, Tailwind 4"],
+      ["Backend", "Node.js, Express, pnpm monorepo, multer + pdf-parse for CV upload"],
+      ["Auth", "JWT access tokens (15 min) with rotating refresh tokens — SHA-256 hashed in Postgres, httpOnly cookie scoped to /api/auth, bcrypt at cost 12, rate limiting on register and login"],
       ["Data", "PostgreSQL on Neon, six sequential migrations, seeded company registry"],
-      ["AI", "Anthropic, Gemini and Groq SDKs behind a shared extraction interface"],
-      // TODO: confirm where the API actually runs. The live URL is on Vercel, but the
-      // long-running crawl was the reason for choosing Render. Whichever is true, this
-      // line and the "Why Render and not Vercel" note below must agree with reality —
-      // a reviewer WILL click the link and notice a mismatch.
+      ["AI", "Groq SDK, three-model Llama fallback chain"],
       ["Infra", "Deployed on Vercel, GitHub Actions"],
       ["Role", "Sole engineer — architecture, implementation, deployment"],
     ],
     /* Screenshots. Put the files in /public/shots/. Any that fail to load are
        hidden automatically, so a missing file never shows a broken image. */
     shots: [
-      { src: "./shots/jobintel-signin.png", alt: "JobIntel sign-in screen" },
       { src: "./shots/jobintel-dashboard.png", alt: "Job listings dashboard" },
       { src: "./shots/jobintel-match.png", alt: "Résumé match scoring view" },
+      { src: "./shots/jobintel-signin.png", alt: "JobIntel sign-in screen" },
     ],
     detail: [
       {
-        h: "Why Render and not Vercel for the API",
-        p: "A crawl pass runs for minutes, and résumé upload streams a PDF through multer before parsing. Both patterns exceed serverless execution limits, so the API runs as a long-lived process on Render while the Next.js frontend stays on Vercel where it belongs.",
+        h: "Failing over on rate limits without hiding real failures",
+        p: "The retry loop catches HTTP 429 only, and only while another model is left in the chain. Every other error — a malformed prompt, a bad key, a schema the parser can't read — is re-thrown on the spot. Blanket-catching would have made the endpoint look reliable while quietly returning nothing.",
       },
       {
         h: "Why Neon for Postgres",
@@ -50,8 +47,7 @@ export const PROJECTS = [
     ],
     links: [
       { label: "Live app", href: "https://irvine-jobs-app-api.vercel.app/", primary: true },
-      { label: "API repository", href: "https://github.com/lanuyenuit/irvine-jobs-app" },
-      { label: "Frontend repository", href: "https://github.com/lanuyenuit/job-intelligence" },
+      { label: "Repository", href: "https://github.com/lanuyenuit/irvine-jobs-app" },
     ],
   },
   {

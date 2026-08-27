@@ -40,7 +40,7 @@ export const JOBS = [
 
 export const SKILLS = [
   { g: "Languages", items: [["TypeScript", 1], ["JavaScript", 1], ["HTML5", 1], ["CSS3 / SCSS", 1], ["SQL", 1], ["Java", 0], ["Python", 0]] },
-  { g: "Frontend", items: [["React", 1], ["Next.js", 1], ["Redux Toolkit", 1], ["React Query", 1], ["React Hook Form", 0], ["Accessibility", 0], ["Performance", 0]] },
+  { g: "Frontend", items: [["React", 1], ["Redux Toolkit", 1], ["React Query", 1], ["Next.js", 0], ["React Hook Form", 0], ["Accessibility", 0], ["Performance", 0]] },
   { g: "Backend & data", items: [["Node.js", 1], ["Express", 1], ["REST APIs", 1], ["PostgreSQL", 1], ["JWT auth", 0], ["JSON / XML", 0], ["NoSQL", 0]] },
   { g: "Testing", items: [["Jest", 1], ["React Testing Library", 1], ["Cypress", 0], ["Playwright", 0], ["Integration testing", 0]] },
   { g: "Platform", items: [["Docker", 1], ["GitHub Actions", 1], ["CI/CD", 1], ["Kubernetes", 0], ["Microservices", 0], ["AWS", 0]] },
